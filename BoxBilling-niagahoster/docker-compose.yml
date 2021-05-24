@@ -1,0 +1,20 @@
+version: '3.7'
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_USER : 'root'
+      MYSQL_PASSWORD: "qwerty12345"
+      MYSQL_ROOT_PASSWORD : "qwerty12345"
+  app:
+    build:
+      context: .
+      dockerfile: .Docker/Dockerfile
+    image: 'boxbiling-niagahoster'
+    ports:
+      - "8080:8004"
+    volumes:
+      - ./:/var/www/html/Boxbiling
